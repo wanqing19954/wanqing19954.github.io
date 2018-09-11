@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-09-11T05:26:09.158Z</updated>
+  <updated>2018-09-11T05:54:49.580Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,36 +17,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>左中右布局</title>
-    <link href="http://yoursite.com/2018/09/11/%E5%B7%A6%E4%B8%AD%E5%8F%B3%E5%B8%83%E5%B1%80/"/>
-    <id>http://yoursite.com/2018/09/11/左中右布局/</id>
-    <published>2018-09-11T04:53:28.000Z</published>
-    <updated>2018-09-11T05:26:09.158Z</updated>
+    <title>Vue filter</title>
+    <link href="http://yoursite.com/2018/06/12/filter/"/>
+    <id>http://yoursite.com/2018/06/12/filter/</id>
+    <published>2018-06-12T12:52:32.000Z</published>
+    <updated>2018-09-11T05:54:49.580Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="左中右布局方式"><a href="#左中右布局方式" class="headerlink" title="左中右布局方式"></a>左中右布局方式</h1><h2 id="1-float"><a href="#1-float" class="headerlink" title="1.float"></a>1.float</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#html </span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;content&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;left&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;right&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;center&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#css </span><br><span class="line"></span><br><span class="line">#content &#123;</span><br><span class="line">    height: 300px;</span><br><span class="line">&#125;</span><br><span class="line">.left &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background:#ff6852;</span><br><span class="line">&#125;</span><br><span class="line">.right &#123;</span><br><span class="line">    float: right;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background: #333;</span><br><span class="line">&#125;</span><br><span class="line">.center &#123;</span><br><span class="line">    margin-left: 200px;</span><br><span class="line">    margin-right: 200px;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background: #999;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="2-flex-布局"><a href="#2-flex-布局" class="headerlink" title="2.flex 布局"></a>2.flex 布局</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#html </span><br><span class="line">&lt;div id=&quot;content&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;left&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;center&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;right&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#css</span><br><span class="line">#content &#123;</span><br><span class="line">    height: 300px;</span><br><span class="line">    display:flex;</span><br><span class="line">&#125;</span><br><span class="line">.left &#123;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background:#ff6852;</span><br><span class="line">    flex: 0 0 200px;</span><br><span class="line">&#125;</span><br><span class="line">.center &#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background: #999;</span><br><span class="line">&#125;</span><br><span class="line">.right &#123;</span><br><span class="line">    height: 100%;</span><br><span class="line">    flex: 0 0 200px;</span><br><span class="line">    backgroundd: #333;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vue生命周期</title>
+    <link href="http://yoursite.com/2018/06/11/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+    <id>http://yoursite.com/2018/06/11/Vue生命周期/</id>
+    <published>2018-06-11T05:33:25.000Z</published>
+    <updated>2018-09-11T05:54:33.007Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h1><h2 id="1-beforeCreate"><a href="#1-beforeCreate" class="headerlink" title="1. beforeCreate"></a>1. beforeCreate</h2><p>类型：function</p><p>作用：在实例初始化之后，数据观测(data observer) 和 event/watcher事件配置之前调用</p><h2 id="2-created"><a href="#2-created" class="headerlink" title="2. created"></a>2. created</h2><p>类型: function</p><p>详细：在实例创建完成后被立即调用。在这一步，实例已完成以下配置：数据观测(data observer) 属性和方法的运算，watch/event事件回调。然而，挂载阶段还没开始，$el属性目前不可见</p><h2 id="3-beforeMount"><a href="#3-beforeMount" class="headerlink" title="3. beforeMount"></a>3. beforeMount</h2><p>详细: 在挂载之前被调用：相关的render函数首次被调用</p><h2 id="4-mounted"><a href="#4-mounted" class="headerlink" title="4. mounted"></a>4. mounted</h2><p>详细: el被新创建的vm.el替换,并挂载到实例上去之后调用该钩子。如果root实例挂载了一个文档内元素，当mounted被调用时vm.$el也在文档内</p><h2 id="5-beforeUpdate"><a href="#5-beforeUpdate" class="headerlink" title="5. beforeUpdate"></a>5. beforeUpdate</h2><p>详细：数据更新时调用，发生在虚拟DOM打补丁之前，这里适合在更新之前访问现有的DOM,比如手动清楚已添加的事件监听器</p><h2 id="6-updated"><a href="#6-updated" class="headerlink" title="6. updated"></a>6. updated</h2><p>详细: 由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。</p><p>当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态。如果要相应状态改变，通常最好使用<a href="https://cn.vuejs.org/v2/api/#computed" target="_blank" rel="noopener">计算属性</a>或 <a href="https://cn.vuejs.org/v2/api/#watch" target="_blank" rel="noopener">watcher</a> 取而代之。</p><h2 id="7-activated"><a href="#7-activated" class="headerlink" title="7. activated"></a>7. activated</h2><p>详细： keep-alive组件激活时调用</p><h2 id="8-deactivated"><a href="#8-deactivated" class="headerlink" title="8. deactivated"></a>8. deactivated</h2><p>详细： keep-alive 组件停用时调用。</p><h2 id="9-beforeDestory"><a href="#9-beforeDestory" class="headerlink" title="9.beforeDestory"></a>9.beforeDestory</h2><p>详细: 在实例销毁之前调用，在这一步。实例仍然完全可用</p><h2 id="10-destoryed"><a href="#10-destoryed" class="headerlink" title="10.destoryed"></a>10.destoryed</h2><p>详细：Vue实例销毁后调用，调用后，Vue实例指示的所有东西会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;左中右布局方式&quot;&gt;&lt;a href=&quot;#左中右布局方式&quot; class=&quot;headerlink&quot; title=&quot;左中右布局方式&quot;&gt;&lt;/a&gt;左中右布局方式&lt;/h1&gt;&lt;h2 id=&quot;1-float&quot;&gt;&lt;a href=&quot;#1-float&quot; class=&quot;headerlink
+        &lt;h1 id=&quot;Vue生命周期&quot;&gt;&lt;a href=&quot;#Vue生命周期&quot; class=&quot;headerlink&quot; title=&quot;Vue生命周期&quot;&gt;&lt;/a&gt;Vue生命周期&lt;/h1&gt;&lt;h2 id=&quot;1-beforeCreate&quot;&gt;&lt;a href=&quot;#1-beforeCreate&quot; cla
       
     
     </summary>
     
-      <category term="CSS" scheme="http://yoursite.com/categories/CSS/"/>
+      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
     
     
-      <category term="CSS" scheme="http://yoursite.com/tags/CSS/"/>
+      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
     
   </entry>
   
   <entry>
     <title>JS数据类型</title>
-    <link href="http://yoursite.com/2018/01/24/page/"/>
-    <id>http://yoursite.com/2018/01/24/page/</id>
-    <published>2018-01-24T15:13:46.000Z</published>
-    <updated>2018-05-03T14:49:32.000Z</updated>
+    <link href="http://yoursite.com/2018/03/24/page/"/>
+    <id>http://yoursite.com/2018/03/24/page/</id>
+    <published>2018-03-24T15:13:46.000Z</published>
+    <updated>2018-09-11T05:53:41.741Z</updated>
     
     <content type="html"><![CDATA[<h1 id="JS基础"><a href="#JS基础" class="headerlink" title="JS基础"></a>JS基础</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="原始类型"><a href="#原始类型" class="headerlink" title="原始类型"></a>原始类型</h3><p>1.number     数字</p><p>2.string      字符</p><p>3.boolean     布尔值   true or false</p><p>4.null        空 值</p><p>5.undefined   未定义</p><h3 id="object-对象类型"><a href="#object-对象类型" class="headerlink" title="object 对象类型"></a>object 对象类型</h3><ol><li><p>Function</p></li><li><p>Array</p></li><li><p>Date </p></li></ol><h3 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h3><h4 id="和"><a href="#和" class="headerlink" title="+ 和 -"></a>+ 和 -</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x = &apos;The answer is &apos;  +42;</span><br><span class="line">var y = 42 + &apos;is the answer&apos;;</span><br></pre></td></tr></table></figure><p>num 变成 数字类型  num - 0</p><p>num 变成字符串     num + “</p><h4 id="转换数据类型"><a href="#转换数据类型" class="headerlink" title="== 转换数据类型"></a>== 转换数据类型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;123&quot; == 123;</span><br><span class="line">true</span><br><span class="line">0 == false;</span><br><span class="line">true</span><br><span class="line">null == undefined;</span><br><span class="line">true</span><br></pre></td></tr></table></figure><h4 id="a-b"><a href="#a-b" class="headerlink" title="a === b"></a>a === b</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">类型不同，返回false</span><br><span class="line">类型相同:</span><br><span class="line">null === null</span><br><span class="line">undefined === undefined</span><br><span class="line">NaN ≠ NaN</span><br><span class="line">new Object ≠ new Object</span><br></pre></td></tr></table></figure><h3 id="包装对象"><a href="#包装对象" class="headerlink" title="包装对象"></a>包装对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;string&quot;;</span><br><span class="line">undefined</span><br><span class="line">var strObj = new String(&quot;string&quot;);</span><br><span class="line">undefined</span><br><span class="line">str</span><br><span class="line">&quot;string&quot;</span><br><span class="line">strObj</span><br><span class="line">String &#123;0: &quot;s&quot;, 1: &quot;t&quot;, 2: &quot;r&quot;, 3: &quot;i&quot;, 4: &quot;n&quot;, 5: &quot;g&quot;, length: 6, [[PrimitiveValue]]: &quot;string&quot;&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -90,6 +104,31 @@
     
     
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>左中右布局</title>
+    <link href="http://yoursite.com/2016/08/11/%E5%B7%A6%E4%B8%AD%E5%8F%B3%E5%B8%83%E5%B1%80/"/>
+    <id>http://yoursite.com/2016/08/11/左中右布局/</id>
+    <published>2016-08-11T04:53:28.000Z</published>
+    <updated>2018-09-11T05:54:09.115Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="左中右布局方式"><a href="#左中右布局方式" class="headerlink" title="左中右布局方式"></a>左中右布局方式</h1><h2 id="1-float"><a href="#1-float" class="headerlink" title="1.float"></a>1.float</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#html </span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;content&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;left&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;right&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;center&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#css </span><br><span class="line"></span><br><span class="line">#content &#123;</span><br><span class="line">    height: 300px;</span><br><span class="line">&#125;</span><br><span class="line">.left &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background:#ff6852;</span><br><span class="line">&#125;</span><br><span class="line">.right &#123;</span><br><span class="line">    float: right;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background: #333;</span><br><span class="line">&#125;</span><br><span class="line">.center &#123;</span><br><span class="line">    margin-left: 200px;</span><br><span class="line">    margin-right: 200px;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background: #999;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="2-flex-布局"><a href="#2-flex-布局" class="headerlink" title="2.flex 布局"></a>2.flex 布局</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#html </span><br><span class="line">&lt;div id=&quot;content&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;left&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;center&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;right&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#css</span><br><span class="line">#content &#123;</span><br><span class="line">    height: 300px;</span><br><span class="line">    display:flex;</span><br><span class="line">&#125;</span><br><span class="line">.left &#123;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background:#ff6852;</span><br><span class="line">    flex: 0 0 200px;</span><br><span class="line">&#125;</span><br><span class="line">.center &#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    height: 100%;</span><br><span class="line">    background: #999;</span><br><span class="line">&#125;</span><br><span class="line">.right &#123;</span><br><span class="line">    height: 100%;</span><br><span class="line">    flex: 0 0 200px;</span><br><span class="line">    backgroundd: #333;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;左中右布局方式&quot;&gt;&lt;a href=&quot;#左中右布局方式&quot; class=&quot;headerlink&quot; title=&quot;左中右布局方式&quot;&gt;&lt;/a&gt;左中右布局方式&lt;/h1&gt;&lt;h2 id=&quot;1-float&quot;&gt;&lt;a href=&quot;#1-float&quot; class=&quot;headerlink
+      
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://yoursite.com/categories/CSS/"/>
+    
+    
+      <category term="CSS" scheme="http://yoursite.com/tags/CSS/"/>
     
   </entry>
   

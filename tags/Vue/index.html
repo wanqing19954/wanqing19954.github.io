@@ -356,39 +356,28 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/03/24/page/" >
+        <a class="abstract-title" href = "/2018/06/11/Vue生命周期/" >
             
-                <span>JS数据类型</span>
+                <span>Vue生命周期</span>
         </a>
         <div class="abstract-content">
-            JS基础数据类型原始类型1.number     数字
-2.string      字符
-3.boolean     布尔值   true or false
-4.null        空 值
-5.undefined   未定义
-object 对象类型
-Function
-
-Array
-
-Date 
-
-
-隐式转换+ 和 -12var x = &apos;The answer is &apos;  +42;var y = 42 + &apos;is the answer&apos;;
-num 变成 数字类型  num - 0
-num 变成字符串     num + “
-== 转换数据类型12...
+            Vue生命周期1. beforeCreate类型：function
+作用：在实例初始化之后，数据观测(data observer) 和 event/watcher事件配置之前调用
+2. created类型: function
+详细：在实例创建完成后被立即调用。在这一步，实例已完成以下配置：数据观测(data observer) 属性和方法的运算，watch/event事件回调。然而，挂载阶段还没开始，$el属性目前不可见
+3. beforeMount详细: 在挂载之前被调用：相关的render函数首次被调用
+4. mounted详细: el被新创建的vm.el替换,并挂载到实例上去之后调...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/24</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/11</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JS">JS</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Vue">Vue</a>
     
 </div>
             
