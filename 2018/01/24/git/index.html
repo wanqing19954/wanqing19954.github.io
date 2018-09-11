@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="wangetcat">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="wangetcat">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>git学习与总结 · sanyuyu</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?2842c0ad835cf657c563c451d6c37697";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >sanyuyu&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">git学习与总结</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>sanyuyu's Studio.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            git学习与总结
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "git">git</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">5.1k</span>阅读时长: <span class="post-count reading-time">21 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/01/24</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="一-获取git仓库"><a href="#一-获取git仓库" class="headerlink" title="一.获取git仓库"></a>一.获取git仓库</h2><p>　　有两种取得Git项目仓库的方法。第一种是在现有项目或目录下导入所有文件到Git中；第二中是从一个服务器或者github克隆一个现有的Git仓库。</p>
+<h3 id="在你新建的文件夹来建一个新的仓库"><a href="#在你新建的文件夹来建一个新的仓库" class="headerlink" title="在你新建的文件夹来建一个新的仓库"></a>在你新建的文件夹来建一个新的仓库</h3><p>如果你打算使用Git来对现有的项目进行管理，你只需要进入该项目所在的文件夹并且输入  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd  yourRepo                                  进入你新建文件夹中</span><br><span class="line">git init                                    建立一个新的仓库</span><br></pre></td></tr></table></figure>
+<p>　　如果你在一个已经存在文件的文件夹里建立了一个新仓库，你应该开始跟踪这些文件并提交。 你可通过 git add 命令来实现对指定文件的跟踪，然后执行 git commit 提交：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m&quot; new version&quot;</span><br></pre></td></tr></table></figure>
+<p>一般，刚建立的文件夹，仓库都是新的。不需要上面的那些命令  </p>
+<a id="more"></a>   
+<h3 id="克隆你以前的仓库或者别人的仓库"><a href="#克隆你以前的仓库或者别人的仓库" class="headerlink" title="克隆你以前的仓库或者别人的仓库"></a>克隆你以前的仓库或者别人的仓库</h3><p>　　如果你想获得一份已经存在的Git仓库的话，比如，你想为某个开源项目贡献自己的一份力，这时就要用到git clone命令。git克隆的是Git仓库服务器上的几乎所有数据。而不是仅仅赋值完成你的工作所需要文件。当你执行git clone命令的时候，默认配置下远程仓库中的每一个文件的每一个版本都将被拉去下来。可以用下面的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone http://github.com/jack/learn</span><br></pre></td></tr></table></figure>
+<p>这会在当前目录下创建一个名为“learn”的文件夹在你的电脑上，并在这个目录下初始化一个.git文件夹，从远程仓库拉取下所有数据到你的文件夹里，如果你想自定义本地仓库的名字，可以在后面 添加 你的名字</p>
+<h2 id="二、记录每次更新到仓库"><a href="#二、记录每次更新到仓库" class="headerlink" title="二、记录每次更新到仓库"></a>二、记录每次更新到仓库</h2><p>　　现在我们手上有了一个Git仓库，并从这个仓库取出了所有文件的工作拷贝。接下来，对这些文件做了修改，在完成了一个阶段的目标后，提交每次跟新到仓库。<br>　　一般文件都处于未修改，已修改，或已放入暂存区。工作目录中除已跟踪文件以外的所有文件都属于未跟踪文件，它们即不存在于上次快照的记录中，也没有放入暂存区。初次克隆某个仓库的时候，工作目录中的所有文件都属于已跟踪文件，并处于未修改状态。<br>　　编辑修改某些文件之后，由于上次提交后，你对它们做了修改，Git将它们标记为已修改文件。我们逐步将这些修改过的文件放入暂存区，再提交素有暂存了的修改<br>　　文件从本地 到暂存区 到远程仓库。<br>简称文件处于什么状态，可以用 git status 简写“git st”,如果在克隆仓库后立即使用git st 会看到没有可以提交的，说明都没有被修改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">on branch master</span><br><span class="line">nothing to commit ,working directory clean</span><br></pre></td></tr></table></figure>
+<p>　　这些信息，告诉你当前目录没有出现任何处于未跟踪状态的新文件，否则Git会列出来，最后改命令还显示了当前所在分支，并告诉你这个分支同远程服务器上对应的分支没有偏离。现在分支名是”master”,这是默认的分支名。我们在Git分支后会降到。<br>现在，让我们在项目下新建一个新的README文件，如果之前并不存在这个文件，使用 git status 命令你会看到新的未跟踪文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">on branch master</span><br><span class="line">Untracked files:</span><br><span class="line">	(use &quot;git add &lt;file&gt;..&quot; to  include in what will be  commited)</span><br><span class="line">	README</span><br><span class="line">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span><br></pre></td></tr></table></figure>
+<p>在状态报告中可以看到新建的README文件出现在Untracked files 下面。未跟踪的文件以为这Git在之前的快照中没有这些文件。  </p>
+<h3 id="添加新文件"><a href="#添加新文件" class="headerlink" title="添加新文件"></a>添加新文件</h3><p>使用命令 git add 开始跟踪一个文件。所以，要跟踪README文件，运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add README</span><br></pre></td></tr></table></figure>
+<p>此时再运行git status 命令， 会看到README 文件已被跟踪，并成功并处于暂存状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">on branch master</span><br><span class="line">changes to be commited:</span><br><span class="line"> (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"> new file: README</span><br></pre></td></tr></table></figure>
+<p>　　只要在Change to be commited 这行下面的，就说明是已暂存状态，如果此时提交，那么该文件此时此刻的版本将被留存在历史历史记录中。  </p>
+<h3 id="暂存已修改文件"><a href="#暂存已修改文件" class="headerlink" title="暂存已修改文件"></a>暂存已修改文件</h3><p>　　现在我们来修改一个已被跟踪的文件。如果你修改了一个名字为index.html的已被跟踪文件<br>然后运行 git status 命令，会看到以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">on branch master</span><br><span class="line">change to be commited:</span><br><span class="line">	(use &quot;git reset HEAD &lt;file&gt;..&quot; to unstage)</span><br><span class="line">	new file: README</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">	(use &quot;git add &lt;file&gt;...&quot; to upadte what will be  commited)</span><br><span class="line">	(use &quot;git checkout --&lt;file&gt;..&quot; to discared changes in working directory)</span><br><span class="line">	modified: index.html</span><br></pre></td></tr></table></figure>
+<p>　　文件index.html出现在Changes not staged for commit 这行下面，说明已跟踪文件的内容发生了变化，但还没有放到暂存区，需要git add 命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git add index.html</span><br><span class="line">$ git status</span><br><span class="line">on branch master</span><br><span class="line">Changes to be commited:</span><br><span class="line">	(use &quot;git reset HEAD &lt;file&gt;..” to unstage)</span><br><span class="line">new file: README</span><br><span class="line">modified: index.html</span><br></pre></td></tr></table></figure>
+<p>　　现在两个文件都已被暂存，下次提交时就会一并记录到仓库，假设此时你想要在 index.html 里再加条注释，重新编辑存盘后，准备提交。再git status 你会发现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ vim index.html</span><br><span class="line">$ git st</span><br><span class="line">on branch master</span><br><span class="line">changes to be commited:</span><br><span class="line">	(use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line">	new file: README</span><br><span class="line">	modified: index.html</span><br><span class="line">changes not staged for commit:</span><br><span class="line">	(use &quot;git add &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">	(use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">	modified: index.html</span><br></pre></td></tr></table></figure>
+<p>　　出现了两个 index.html，同时出现在暂存区和非暂存区。git只不过暂存了你运行git add 命令的版本，如果你现在提交。idnex.html的版本是你最后一次运行 git add 命令的那个版本。而不是你运行 git commit 时，在工作目录中的当前版本，所以你需要重新git add。  </p>
+<h3 id="查看已暂存和未暂存的修改"><a href="#查看已暂存和未暂存的修改" class="headerlink" title="查看已暂存和未暂存的修改"></a>查看已暂存和未暂存的修改</h3><p>　　如果git status，输出不知道具体修改了什么，可以用git diff命令<br>假如再次修改README 文件后暂存，然后编辑index.html文件后先不暂存,查看尚未暂存的文件更新了哪些部分，不加参数，直接输入 git diff</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line">diff --git a/index.html b/index.html</span><br><span class="line">--- a/index.html</span><br><span class="line">+++ b/index.html</span><br><span class="line">@@ -65,7 +65,8 @@ branch directly, things can get messy.</span><br><span class="line"> Please include a nice description of your changes when you submit your PR;</span><br><span class="line"> if we have to read the whole diff to figure out why you&apos;re contributing</span><br><span class="line"> in the first place, you&apos;re less likely to get feedback and have your change</span><br><span class="line">-merged in.</span><br><span class="line">+merged in. Also, split your changes into comprehensive chunks if your patch is</span><br><span class="line">+longer than a dozen lines.</span><br><span class="line"></span><br><span class="line"> If you are starting to work on a particular area, feel free to submit a PR</span><br><span class="line"> that highlights your work in progress (and note in the PR title that it&apos;s</span><br></pre></td></tr></table></figure>
+<h3 id="提交更新"><a href="#提交更新" class="headerlink" title="提交更新"></a>提交更新</h3><p>现在的暂存区已经可以提交了，再此之前看看是否有没被提交的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -a -m &apos;added new benchmarks&apos;</span><br><span class="line">[master 83e38c7] added new benchmarks</span><br><span class="line"> 1 file changed, 5 insertions(+), 0 deletions(-)</span><br></pre></td></tr></table></figure>
+<h3 id="移除文件"><a href="#移除文件" class="headerlink" title="移除文件"></a>移除文件</h3><p>　　要从git中移除某个文件，就必须要从已跟踪文件清单中移除（确切的说，是从暂存区中移除），然后提交，可以用 git rm 命令完成此项工作，并连带从工作目录中删除指定的文件，这样以后就不会出现在未跟文件清单中了。<br>如果只是本地文件夹里删除文件，运行git status 时就会看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ rm index.html</span><br><span class="line">$ git status</span><br><span class="line">on branch master</span><br><span class="line">Your branch is up-to-date with &apos;origin/master&apos;.</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">	(use &quot;git add/rm &lt;file&gt;...&quot; to update what will be commited)</span><br><span class="line">	(use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line">	</span><br><span class="line">	deleted:	index.html</span><br></pre></td></tr></table></figure>
+<p>然后在运行git rm 记录此次移除文件的操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$git rm index.html</span><br><span class="line">rm &apos;index.html&apos;</span><br><span class="line">$git st</span><br><span class="line">on branch master</span><br><span class="line">Changes to be commited:</span><br><span class="line">	(use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line">	</span><br><span class="line">		deleted:  	index.html</span><br></pre></td></tr></table></figure>
+<p>　　下一次提交时，该文件就不再纳入版本管理了，如果删除之前修改过而且已经放到暂存区，则必须要用强制删除选项-f<br>如果只是想将它从git仓库里（即从暂存区域移除），但仍然希望保留在当前工作目录中，换句话说，你想让文件保留在磁盘中，但是不想被git 追踪，可以使用 –cached 选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached README</span><br></pre></td></tr></table></figure>
+<h3 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h3><p>要在git 中对文件改名，可以这么做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git mv file_from file_to</span><br></pre></td></tr></table></figure>
+<p>你会明白关于重命名操作的说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git mv README.md README</span><br><span class="line">$ git status</span><br><span class="line">on branch master</span><br><span class="line">Changes to be commited:</span><br><span class="line">	(use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line">	</span><br><span class="line">	renamed: README.md -&gt; README</span><br></pre></td></tr></table></figure>
+<p>其实，git mv 相当于运行了下面的三条命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mv README.md README</span><br><span class="line">$ git rm README.md</span><br><span class="line">$ git add README</span><br></pre></td></tr></table></figure>
+<p>如此分开操作，也是重命名</p>
+<h2 id="三、查看提交历史"><a href="#三、查看提交历史" class="headerlink" title="三、查看提交历史"></a>三、查看提交历史</h2><p>　　在提交了若干更新，有或者克隆了某个项目之后，你也许想回顾选下提交历史。可以用git log 命令<br>我从github 上clone 一个项目用于演示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/schacon/simple-progit</span><br></pre></td></tr></table></figure>
+<p>　　然后在此项目中运行git log, 应该会看到下面的输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit ca82a6dff817ec66f44342007202690a93763949</span><br><span class="line">Author: Scott Chacon &lt;schacon@gee-mail.com&gt;</span><br><span class="line">Date:   Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line"></span><br><span class="line">    changed the version number</span><br><span class="line"></span><br><span class="line">commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7</span><br><span class="line">Author: Scott Chacon &lt;schacon@gee-mail.com&gt;</span><br><span class="line">Date:   Sat Mar 15 16:40:33 2008 -0700</span><br><span class="line"></span><br><span class="line">    removed unnecessary test</span><br><span class="line"></span><br><span class="line">commit a11bef06a3f659402fe7563abf99ad00de2209e6</span><br><span class="line">Author: Scott Chacon &lt;schacon@gee-mail.com&gt;</span><br><span class="line">Date:   Sat Mar 15 10:31:28 2008 -0700</span><br><span class="line"></span><br><span class="line">    first commit</span><br></pre></td></tr></table></figure>
+<p>　　git log 会按提交时间列出所有的更新，最新的在最上面。正如你所看到的，这个命令会列出每个SHA-1校检、作者的名字和电子邮件地址，提交时间和提交说明<br>一个常用的选项是 -p 用来显示每次提交的内容差异，你也可以加上 -2 来仅显示最近两次提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">$ git log -p -2</span><br><span class="line">commit ca82a6dff817ec66f44342007202690a93763949</span><br><span class="line">Author: Scott Chacon &lt;schacon@gee-mail.com&gt;</span><br><span class="line">Date:   Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line"></span><br><span class="line">    changed the version number</span><br><span class="line"></span><br><span class="line">diff --git a/Rakefile b/Rakefile</span><br><span class="line">index a874b73..8f94139 100644</span><br><span class="line">--- a/Rakefile</span><br><span class="line">+++ b/Rakefile</span><br><span class="line">@@ -5,7 +5,7 @@ require &apos;rake/gempackagetask&apos;</span><br><span class="line"> spec = Gem::Specification.new do |s|</span><br><span class="line">     s.platform  =   Gem::Platform::RUBY</span><br><span class="line">     s.name      =   &quot;simplegit&quot;</span><br><span class="line">-    s.version   =   &quot;0.1.0&quot;</span><br><span class="line">+    s.version   =   &quot;0.1.1&quot;</span><br><span class="line">     s.author    =   &quot;Scott Chacon&quot;</span><br><span class="line">     s.email     =   &quot;schacon@gee-mail.com&quot;</span><br><span class="line">     s.summary   =   &quot;A simple gem for using Git in Ruby code.&quot;</span><br><span class="line"></span><br><span class="line">commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7</span><br><span class="line">Author: Scott Chacon &lt;schacon@gee-mail.com&gt;</span><br><span class="line">Date:   Sat Mar 15 16:40:33 2008 -0700</span><br><span class="line"></span><br><span class="line">    removed unnecessary test</span><br><span class="line"></span><br><span class="line">diff --git a/lib/simplegit.rb b/lib/simplegit.rb</span><br><span class="line">index a0a60ae..47c6340 100644</span><br><span class="line">--- a/lib/simplegit.rb</span><br><span class="line">+++ b/lib/simplegit.rb</span><br><span class="line">@@ -18,8 +18,3 @@ class SimpleGit</span><br><span class="line">     end</span><br><span class="line"></span><br><span class="line"> end</span><br><span class="line">-</span><br><span class="line">-if $0 == __FILE__</span><br><span class="line">-  git = SimpleGit.new</span><br><span class="line">-  puts git.show</span><br><span class="line">-end</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
+<h2 id="四、撤销操作"><a href="#四、撤销操作" class="headerlink" title="四、撤销操作"></a>四、撤销操作</h2><h3 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h3><p>　　在任何一个阶段，你都有可能想要撤销某些操作，这里，我们将会学习几个撤销你所做的修改<br>有时候我们提交完了才发现漏掉了几个文件没有被添加，或者提交信息写错了。此时，可以运行带有 –amend 选项的提交命令尝试重新提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure>
+<p>　　这个命令会将暂存中的文件提交。<br>如果你提交后发现忘记了暂存某些需要的修改，可以像下面这样操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &apos;initial commit&apos;</span><br><span class="line">$ git add  forgotten-file</span><br><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure>
+<h2 id="五、远程仓库的使用"><a href="#五、远程仓库的使用" class="headerlink" title="五、远程仓库的使用"></a>五、远程仓库的使用</h2><p>　　为了能在任意Git项目上协作，你需要知道如何管理自己的远程仓库。远程仓库是指托管在网络上的版本库，你可以有好几个远程仓库，有的可以读，有的可以读写，与他人协作涉及管理远程仓库以及根据需要推送或拉去数据。管理远程仓库包括了解如何添加远程仓库、移除无效的仓库，管理不同的远程分支并定义他们是否被跟踪等等。在本节中，我们将介绍一部分远程管理的技能。  </p>
+<h3 id="查看远程仓库"><a href="#查看远程仓库" class="headerlink" title="查看远程仓库"></a>查看远程仓库</h3><p>　　如果你想查看你已经配置的远程仓库服务器，可以运行git remote 命令。它会列出你指定的每一个远程服务器的简写。如果你已经克隆了自己的仓库，那么至少应该能看到 origin- 这是Git 给你克隆的仓库服务器的默认名字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git clone http://github.com/schacon/ticgit</span><br><span class="line">Cloning into &apos;ticgit&apos;...</span><br><span class="line">remote: Reusing existing pack: 1857, done.</span><br><span class="line">remote: Total 1857 (delta 0), reused 0 (delta 0)</span><br><span class="line">Receiving objects: 100% (1857/1857), 374.35 KiB | 268.00 KiB/s, done.</span><br><span class="line">Resolving deltas: 100% (772/772), done.</span><br><span class="line">Checking connectivity... done.</span><br><span class="line">$ cd ticgit</span><br><span class="line">$ git remote origin</span><br></pre></td></tr></table></figure>
+<p>　　你也可以制定选项-v,会显示需要读写远程仓库使用的Git保存的简写与其对应的URL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v </span><br><span class="line">origin https://github.com/schacon/ticgit(fetch)</span><br><span class="line">origin https://github.com/schacon/ticgit(push)</span><br></pre></td></tr></table></figure>
+<p>　　如果你的远程仓库不止一个，该命令会将它们全部列出。例如，与几个协作者合作的，拥有多个远程仓库的仓库看起来像这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$cd grit</span><br><span class="line">$git remote -v</span><br><span class="line">bakkdoor  https://github.com/bakkdoor/grit (fetch)</span><br><span class="line">bakkdoor  https://github.com/bakkdoor/grit (push)</span><br><span class="line">cho45     https://github.com/cho45/grit (fetch)</span><br><span class="line">cho45     https://github.com/cho45/grit (push)</span><br><span class="line">defunkt   https://github.com/defunkt/grit (fetch)</span><br><span class="line">defunkt   https://github.com/defunkt/grit (push)</span><br><span class="line">koke      git://github.com/koke/grit.git (fetch)</span><br><span class="line">koke      git://github.com/koke/grit.git (push)</span><br><span class="line">origin    git@github.com:mojombo/grit.git (fetch)</span><br><span class="line">origin    git@github.com:mojombo/grit.git (push)</span><br></pre></td></tr></table></figure>
+<p>　　这样我们可以轻松拉取其中任何一个用户的贡献。此外，我们大概还会有某些远程仓库的推送权限。</p>
+<h3 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h3><p>　　之前提到并展示了如何添加远程仓库的示例，运行 git remote add <shortname><url> 添加一个新的远程Git仓库，同时指定一个你可以轻松引用的简写</url></shortname></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git remote origin </span><br><span class="line">$ git remote add pb https://github.com/paulboone/ticgit</span><br><span class="line">$ git remote -v</span><br><span class="line">origin https://github.com/schacon/ticgit(fetch)</span><br><span class="line">origin https://github.com/schacon/ticgit(push)</span><br><span class="line">pb https://github.com/paulboone/ticigit(fetch)</span><br><span class="line">pb https://github.com./paulboone/ticigit(push)</span><br></pre></td></tr></table></figure>
+<p>　　现在你可以在命令行中使用字符串pb来代替整个URL。例如，如果你想拉取Paul的仓库中有但你没有的信息，可以运行 git fetch pb</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch pb</span><br><span class="line">remote: Counting objects: 43, done.</span><br><span class="line">remote: Compressing objects: 100% (36/36), done.</span><br><span class="line">remote: Total 43 (delta 10), reused 31 (delta 5)</span><br><span class="line">Unpacking objects: 100% (43/43), done.</span><br><span class="line">From https://github.com/paulboone/ticgit</span><br><span class="line"> * [new branch]      master     -&gt; pb/master</span><br><span class="line"> * [new branch]      ticgit     -&gt; pb/ticgit</span><br></pre></td></tr></table></figure>
+<p>　　现在Paul的master分支可以在本地通过pb/master访问到- 你可以将它合并到自己的某个分支中，或者如果你想要查看它的话，可以检出一个指向该点的本地分支  </p>
+<h3 id="从远程仓库中抓取与拉取"><a href="#从远程仓库中抓取与拉取" class="headerlink" title="从远程仓库中抓取与拉取"></a>从远程仓库中抓取与拉取</h3><p>就如刚才所见，从远程仓库中获得数据，可以执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch [remote-name]</span><br></pre></td></tr></table></figure>
+<p>　　这个命令会访问远程仓库，从中拉取你没有的数据。执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时 合并或查看。<br>如果你使用clone命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以”origin”为简写。所以，git fetch orgin 会抓取克隆(或上一次抓取)后新推送的所有工作。当准备好时你必须手动将其合并入你的工作。<br>　　如果你有一个分支设置为跟踪一个远程分支，可以使用git pull命令来自动抓取然后合并远程分支到当前分支。这对你来说可能是一个更简单或更舒服的流程；默认情况下，git clone命令会自动设置本地 master分支<br>跟踪克隆的远程仓库的master分支(或不管是什么名字的默认分支)。运行git pull通常会从最初克隆的服务器上抓取数据并自动尝试合并到当前分支  </p>
+<h3 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h3><p>　　当你想分享你的项目时，必须将其推送到上游。这个命令很简单 git push [remote-name][branch-name]。当你想要将master分支推送到origin 服务器时，那么运行这个命令就可以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<p>　　只有当你克隆服务器的写入权限，并且之前没有人推送过时，这条命令才生效。当你和其他人在同一时间克隆，他们先推送到上游然后你在推送到上游，你的推送就会被拒绝，你必须先将他们的工作拉取下来并将其合并进你的工作后才能推送。  </p>
+<h3 id="查看远程仓库-1"><a href="#查看远程仓库-1" class="headerlink" title="查看远程仓库"></a>查看远程仓库</h3><p>　　如果想要查看某一个远程仓库的更多信息，可以使用git remote show[remote-name] 命令。如果想以一个特定的缩写名运行这个命令，例如origin，会得到像下面的信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git remote show origin</span><br><span class="line">*remote origin</span><br><span class="line"> Fetch URL: https://github.com/schacon/ticgit</span><br><span class="line"> Push  URL: https://github.com/schacon/ticgit</span><br><span class="line"> HEAD branch: master</span><br><span class="line"> Remote branches:</span><br><span class="line">   master                               tracked</span><br><span class="line">   dev-branch                           tracked</span><br><span class="line"> Local branch configured for &apos;git pull&apos;:</span><br><span class="line">   master merges with remote master</span><br><span class="line"> Local ref configured for &apos;git push&apos;:</span><br><span class="line">   master pushes to master (up to date)</span><br></pre></td></tr></table></figure>
+<p>　　它同样会列出远程仓库URL与跟踪分支的信息。这些信息非常有用，它告诉你正处于master分支，并且如果运行git pull，就会抓取所有的远程应用，然后将远程master分支合并到本地master分支。它也会列出拉取到的所有远程应用。  </p>
+<h3 id="远程仓库的移除与重命名"><a href="#远程仓库的移除与重命名" class="headerlink" title="远程仓库的移除与重命名"></a>远程仓库的移除与重命名</h3><p>　　如果想要重命名引用的名字可以运行git remote rename 去修改一个远程仓库的简写名。例如，想要将pb重命名为paul,可以用git remote renmae 这样做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$git remote rename pb paul</span><br><span class="line">$git remote origin paul</span><br></pre></td></tr></table></figure>
+<p>　　值得注意的是这同样也会修改你的远程分支名字。那些过去引用pb/master的现在回引用paul/master。<br>如果因为一些原因想要移除一个远程仓库-你已经从服务器上搬走了或不想使用某一个特定的镜像了，又或者某一个贡献者不再贡献了-可以使用git<br>remote rm:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$git remote rm paul</span><br><span class="line">$git remote origin</span><br></pre></td></tr></table></figure>
+<h2 id="六、打标签"><a href="#六、打标签" class="headerlink" title="六、打标签"></a>六、打标签</h2><p>　　像其他版本控制系统(vcs)系统一样，Git可以给历史中的某一个提交打上标签，以示重要。比较有代表性的是人们会使用这个功能来标记发布结点。</p>
+<h3 id="列出标签"><a href="#列出标签" class="headerlink" title="列出标签"></a>列出标签</h3><p>在Git中列出已有的标签是，只需要输入git tag:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$git tag</span><br><span class="line">v0.1</span><br><span class="line">v1.3</span><br></pre></td></tr></table></figure>
+<p>　　这个命令以字母顺序列出标签，但是它们出现的顺序并不重要<br>你也可以使用特定的模式查找标签。例如，Git自身的源代码仓库包含标签的数量超过500个。如果只对1.8.5系列感兴趣，可以运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$git tag -1 &apos;v.1.8.5&apos;</span><br><span class="line">v1.8.5</span><br><span class="line">v1.8.5-rc0</span><br><span class="line">v1.8.5-rc1</span><br><span class="line">v1.8.5-rc2</span><br><span class="line">v1.8.5-rc3</span><br><span class="line">v1.8.5.1</span><br><span class="line">v1.8.5.2</span><br><span class="line">v1.8.5.3</span><br><span class="line">v1.8.5.4</span><br><span class="line">v1.8.5.5</span><br></pre></td></tr></table></figure>
+<h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><p>git使用两种主要类型的标签：轻量标签(light)与附注标签  </p>
+<h3 id="附注标签"><a href="#附注标签" class="headerlink" title="附注标签"></a>附注标签</h3><p>　　在Git中创建一个附注标签是很简单的。最简单的方式是当你运行tag命令时指定-a选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$git tag -a v1.4 -m &apos;my version 1.4&apos;</span><br><span class="line">$git tag</span><br><span class="line">v0.1</span><br><span class="line">v1.3</span><br><span class="line">v1.4</span><br></pre></td></tr></table></figure>
+<p>　　-m选项指定了一条将会存储在标签中的信息。如果没有为附注标签指定一条信息，Git会运行编辑器要求你输入信息<br>通过git show 命令可以看到标签信息与对应的提交信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$git show v1.4</span><br><span class="line">tag 1.4</span><br><span class="line">Tagger: Ben Straub &lt;ben@straub.cc&gt;</span><br><span class="line">Date:   Sat May 3 20:19:12 2014 -0700</span><br><span class="line"></span><br><span class="line">my version 1.4</span><br><span class="line"></span><br><span class="line">commit ca82a6dff817ec66f44342007202690a93763949</span><br><span class="line">Author: Scott Chacon &lt;schacon@gee-mail.com&gt;</span><br><span class="line">Date:   Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line"></span><br><span class="line">    changed the version number</span><br></pre></td></tr></table></figure>
+<p>　　你会看到显示了标签者的信息、打标签的日期时间、附注信息，然后显示具体的提交信息<br>　　另一种给提交打标签的方式是使用轻量标签。 轻量标签本质上是将提交校验和存储到一个文件中 - 没有保存任何其他信息。 创建轻量标签，不需要使用 -a、-s 或 -m 选项，只需要提供标签名字：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$git tag v1.4-1w</span><br><span class="line">$git tag</span><br><span class="line">v0.1</span><br><span class="line">v1.3</span><br><span class="line">v1.4</span><br><span class="line">v1.4-1w</span><br><span class="line">v1.5</span><br></pre></td></tr></table></figure>
+<h2 id="七、设置别名"><a href="#七、设置别名" class="headerlink" title="七、设置别名"></a>七、设置别名</h2><h3 id="常用命令缩写"><a href="#常用命令缩写" class="headerlink" title="常用命令缩写"></a>常用命令缩写</h3><p>git status 改成 git st  　git checkout 改成 git co<br>git commit 改成 git ci　　git branch 改成 git br<br>可以输入以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$git config --global alias.co checkout</span><br><span class="line">$git config --global alias.br branch</span><br><span class="line">$git config --global alias.ci commit</span><br><span class="line">$git config --global alias.st status</span><br></pre></td></tr></table></figure>
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://yoursite.com">wangetcat</a>
+            <p>原文链接：<a href="http://yoursite.com/2018/01/24/git/">http://yoursite.com/2018/01/24/git/</a>
+            <p>发表日期：<a href="http://yoursite.com/2018/01/24/git/">January 24th 2018, 10:38:28 pm</a>
+            <p>更新日期：<a href="http://yoursite.com/2018/01/24/git/">May 3rd 2018, 10:49:30 pm</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2018/01/24/page/" title= "JS数据类型">
+                    <div class="nextTitle">JS数据类型</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:wanqing19954@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="https://github.com/wanqing19954" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://weibo.com/sanyuyu" class="iconfont-archer weibo" target="_blank" title=weibo></a>
+            
+        
+    
+        
+            
+                <a href="https://www.zhihu.com/people/san-yu-yu-z/activities" class="iconfont-archer zhihu" target="_blank" title=zhihu></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://www.instagram.com/wangecat/" class="iconfont-archer instagram" target="_blank" title=instagram></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-获取git仓库"><span class="toc-number">1.</span> <span class="toc-text">一.获取git仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在你新建的文件夹来建一个新的仓库"><span class="toc-number">1.1.</span> <span class="toc-text">在你新建的文件夹来建一个新的仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#克隆你以前的仓库或者别人的仓库"><span class="toc-number">1.2.</span> <span class="toc-text">克隆你以前的仓库或者别人的仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、记录每次更新到仓库"><span class="toc-number">2.</span> <span class="toc-text">二、记录每次更新到仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加新文件"><span class="toc-number">2.1.</span> <span class="toc-text">添加新文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#暂存已修改文件"><span class="toc-number">2.2.</span> <span class="toc-text">暂存已修改文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看已暂存和未暂存的修改"><span class="toc-number">2.3.</span> <span class="toc-text">查看已暂存和未暂存的修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#提交更新"><span class="toc-number">2.4.</span> <span class="toc-text">提交更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移除文件"><span class="toc-number">2.5.</span> <span class="toc-text">移除文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动文件"><span class="toc-number">2.6.</span> <span class="toc-text">移动文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、查看提交历史"><span class="toc-number">3.</span> <span class="toc-text">三、查看提交历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、撤销操作"><span class="toc-number">4.</span> <span class="toc-text">四、撤销操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#撤销操作"><span class="toc-number">4.1.</span> <span class="toc-text">撤销操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、远程仓库的使用"><span class="toc-number">5.</span> <span class="toc-text">五、远程仓库的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看远程仓库"><span class="toc-number">5.1.</span> <span class="toc-text">查看远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加远程仓库"><span class="toc-number">5.2.</span> <span class="toc-text">添加远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从远程仓库中抓取与拉取"><span class="toc-number">5.3.</span> <span class="toc-text">从远程仓库中抓取与拉取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#推送到远程仓库"><span class="toc-number">5.4.</span> <span class="toc-text">推送到远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看远程仓库-1"><span class="toc-number">5.5.</span> <span class="toc-text">查看远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程仓库的移除与重命名"><span class="toc-number">5.6.</span> <span class="toc-text">远程仓库的移除与重命名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、打标签"><span class="toc-number">6.</span> <span class="toc-text">六、打标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#列出标签"><span class="toc-number">6.1.</span> <span class="toc-text">列出标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建标签"><span class="toc-number">6.2.</span> <span class="toc-text">创建标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#附注标签"><span class="toc-number">6.3.</span> <span class="toc-text">附注标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、设置别名"><span class="toc-number">7.</span> <span class="toc-text">七、设置别名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令缩写"><span class="toc-number">7.1.</span> <span class="toc-text">常用命令缩写</span></a></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 3
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/11</span><a class="archive-post-title" href= "/2018/09/11/左中右布局/" >左中右布局</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/24</span><a class="archive-post-title" href= "/2018/01/24/page/" >JS数据类型</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/24</span><a class="archive-post-title" href= "/2018/01/24/git/" >git学习与总结</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="JS"><span class="iconfont-archer">&#xe606;</span>JS</span>
+    
+        <span class="sidebar-tag-name" data-tags="CSS"><span class="iconfont-archer">&#xe606;</span>CSS</span>
+    
+        <span class="sidebar-tag-name" data-tags="git"><span class="iconfont-archer">&#xe606;</span>git</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="JS"><span class="iconfont-archer">&#xe60a;</span>JS</span>
+    
+        <span class="sidebar-category-name" data-categories="CSS"><span class="iconfont-archer">&#xe60a;</span>CSS</span>
+    
+        <span class="sidebar-category-name" data-categories="git"><span class="iconfont-archer">&#xe60a;</span>git</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "wangetcat"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
