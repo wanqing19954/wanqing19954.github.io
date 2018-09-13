@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-09-11T05:54:49.580Z</updated>
+  <updated>2018-09-11T05:54:33.007Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Vue filter</title>
-    <link href="http://yoursite.com/2018/06/12/filter/"/>
-    <id>http://yoursite.com/2018/06/12/filter/</id>
-    <published>2018-06-12T12:52:32.000Z</published>
-    <updated>2018-09-11T05:54:49.580Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>Vue生命周期</title>
@@ -44,6 +30,31 @@
       
       
         &lt;h1 id=&quot;Vue生命周期&quot;&gt;&lt;a href=&quot;#Vue生命周期&quot; class=&quot;headerlink&quot; title=&quot;Vue生命周期&quot;&gt;&lt;/a&gt;Vue生命周期&lt;/h1&gt;&lt;h2 id=&quot;1-beforeCreate&quot;&gt;&lt;a href=&quot;#1-beforeCreate&quot; cla
+      
+    
+    </summary>
+    
+      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
+    
+    
+      <category term="Vue" scheme="http://yoursite.com/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue过滤器</title>
+    <link href="http://yoursite.com/2018/06/08/filter/"/>
+    <id>http://yoursite.com/2018/06/08/filter/</id>
+    <published>2018-06-08T05:33:25.000Z</published>
+    <updated>2018-09-13T05:55:03.499Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>Vue过滤器可以用于两个地方: 双括号插值和v-bind表达式.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;message | capitalize&#125;&#125;</span><br><span class="line"></span><br><span class="line">&lt;div v-bind:id=&quot;rawId | formatId&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure></p><p>可以在component的options中定义本地的过滤器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">filters: &#123;</span><br><span class="line">    capitalize(value) &#123;</span><br><span class="line">        if (!value) return &apos;&apos;</span><br><span class="line">        value = value.toString()</span><br><span class="line">        return value.charAt(0).toUpperCase + value.slice(1)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>或者在创建Vue实例之前全局定义过滤器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vue.filter(&apos;capitalize&apos;, function (value) &#123;</span><br><span class="line">    if (!value) return &apos;&apos;</span><br><span class="line">    value = value.toString()</span><br><span class="line">    return value.charAt(0).toUpperCase() + value.slice(1)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>过滤器函数总接收表达式的值，作为第一个参数。过滤器可以串联</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;message | filterA | filterB&#125;&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;用法&quot;&gt;&lt;a href=&quot;#用法&quot; class=&quot;headerlink&quot; title=&quot;用法&quot;&gt;&lt;/a&gt;用法&lt;/h2&gt;&lt;p&gt;Vue过滤器可以用于两个地方: 双括号插值和v-bind表达式.&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;t
       
     
     </summary>
