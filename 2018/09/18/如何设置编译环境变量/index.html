@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>sanyuyu</title>
+    <title>如何设置编译环境变量 · sanyuyu</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -213,12 +213,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >sanyuyu&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">如何设置编译环境变量</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>sanyuyu's Studio.</a>
 </header>
@@ -230,24 +241,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            如何设置编译环境变量
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "webpack">webpack</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">181</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/09/18</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -348,215 +409,53 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/18/如何设置编译环境变量/" >
-            
-                <span>如何设置编译环境变量</span>
-        </a>
-        <div class="abstract-content">
-            如何设置前端编译环境变量通常来说，前后端配合的时候，进行编译的时候，需要测试不同环境的借口，确保接口没问题，之后才推送到Production.在使用webpack编译代码，需要如何切换不同环境下的借口呢。这就需要在npm run  [commond][ args] 输入参数。
-第一种方式通过在 npm run  commond[dev, build] –varible=value.
-12345npm run dev --env=daily      // env 表示传入环境的变量variblenpm run dev --env=gray       // process.env.npm...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "webpack">webpack</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/06/11/Vue生命周期/" >
-            
-                <span>Vue生命周期</span>
-        </a>
-        <div class="abstract-content">
-            Vue生命周期1. beforeCreate类型：function
-作用：在实例初始化之后，数据观测(data observer) 和 event/watcher事件配置之前调用
-2. created类型: function
-详细：在实例创建完成后被立即调用。在这一步，实例已完成以下配置：数据观测(data observer) 属性和方法的运算，watch/event事件回调。然而，挂载阶段还没开始，$el属性目前不可见
-3. beforeMount详细: 在挂载之前被调用：相关的render函数首次被调用
-4. mounted详细: el被新创建的vm.el替换,并挂载到实例上去之后调...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Vue">Vue</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/06/08/filter/" >
-            
-                <span>Vue过滤器</span>
-        </a>
-        <div class="abstract-content">
-            用法Vue过滤器可以用于两个地方: 双括号插值和v-bind表达式.123&#123;&#123;message | capitalize&#125;&#125;&lt;div v-bind:id=&quot;rawId | formatId&quot;&gt;&lt;/div&gt;
-可以在component的options中定义本地的过滤器
-1234567filters: &#123;    capitalize(value) &#123;        if (!value) return &apos;&apos;        value = value.toString()  ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/06/08</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Vue">Vue</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/03/24/page/" >
-            
-                <span>JS数据类型</span>
-        </a>
-        <div class="abstract-content">
-            JS基础数据类型原始类型1.number     数字
-2.string      字符
-3.boolean     布尔值   true or false
-4.null        空 值
-5.undefined   未定义
-object 对象类型
-Function
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="如何设置前端编译环境变量"><a href="#如何设置前端编译环境变量" class="headerlink" title="如何设置前端编译环境变量"></a>如何设置前端编译环境变量</h1><p>通常来说，前后端配合的时候，进行编译的时候，需要测试不同环境的借口，确保接口没问题，之后才推送到Production.在使用webpack编译代码，需要如何切换不同环境下的借口呢。这就需要在npm run  [commond][ args] 输入参数。</p>
+<h2 id="第一种方式"><a href="#第一种方式" class="headerlink" title="第一种方式"></a>第一种方式</h2><p>通过在 npm run  commond[dev, build] –varible=value.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm run dev --env=daily      // env 表示传入环境的变量varible</span><br><span class="line">npm run dev --env=gray       // process.env.npm_config.env = gray</span><br><span class="line">npm run dev --env=online	</span><br><span class="line"></span><br><span class="line">const envirment = process.env.npm_config_env // 取到传入的环境参数</span><br></pre></td></tr></table></figure>
+<h2 id="第二种方式"><a href="#第二种方式" class="headerlink" title="第二种方式"></a>第二种方式</h2><p>直接在 npm run [commond][build, dev] 参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm run dev daily</span><br><span class="line">npm run dev gray</span><br><span class="line">npm run dev online</span><br><span class="line"></span><br><span class="line">const node_env = process.env.npm_config_argv.remain[0] //</span><br></pre></td></tr></table></figure>
 
-Array
-
-Date 
-
-
-隐式转换+ 和 -12var x = &apos;The answer is &apos;  +42;var y = 42 + &apos;is the answer&apos;;
-num 变成 数字类型  num - 0
-num 变成字符串     num + “
-== 转换数据类型12...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "JS">JS</a>
-    
-</div>
-            
-        </div>
     </article>
+    <!-- license  -->
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/01/24/git/" >
-            
-                <span>git学习与总结</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="一-获取git仓库"><a href="#一-获取git仓库" class="headerlink" title="一.获取git仓库"></a>一.获取git仓库</h2><p>　　有两种取得Git项目仓库的方法。第一种是在现有项目或目录下导入所有文件到Git中；第二中是从一个服务器或者github克隆一个现有的Git仓库。</p>
-<h3 id="在你新建的文件夹来建一个新的仓库"><a href="#在你新建的文件夹来建一个新的仓库" class="headerlink" title="在你新建的文件夹来建一个新的仓库"></a>在你新建的文件夹来建一个新的仓库</h3><p>如果你打算使用Git来对现有的项目进行管理，你只需要进入该项目所在的文件夹并且输入  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd  yourRepo                                  进入你新建文件夹中</span><br><span class="line">git init                                    建立一个新的仓库</span><br></pre></td></tr></table></figure>
-<p>　　如果你在一个已经存在文件的文件夹里建立了一个新仓库，你应该开始跟踪这些文件并提交。 你可通过 git add 命令来实现对指定文件的跟踪，然后执行 git commit 提交：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m&quot; new version&quot;</span><br></pre></td></tr></table></figure>
-<p>一般，刚建立的文件夹，仓库都是新的。不需要上面的那些命令  </p>
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://yoursite.com">wangetcat</a>
+            <p>原文链接：<a href="http://yoursite.com/2018/09/18/如何设置编译环境变量/">http://yoursite.com/2018/09/18/如何设置编译环境变量/</a>
+            <p>发表日期：<a href="http://yoursite.com/2018/09/18/如何设置编译环境变量/">September 18th 2018, 10:04:42 pm</a>
+            <p>更新日期：<a href="http://yoursite.com/2018/09/18/如何设置编译环境变量/">September 18th 2018, 10:31:30 pm</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/01/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "git">git</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2016/08/11/左中右布局/" >
-            
-                <span>左中右布局</span>
-        </a>
-        <div class="abstract-content">
-            左中右布局方式1.float1234567#html &lt;div id=&quot;content&quot;&gt;    &lt;div class=&quot;left&quot;&gt;&lt;/div&gt;    &lt;div class=&quot;right&quot;&gt;&lt;/div&gt;    &lt;div class=&quot;center&quot;&gt;&lt;/div&gt;&lt;div&gt;
-1234567891011121314151617181920212223#css #content &#123;    height: 30...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/08/11</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "CSS">CSS</a>
-    
-</div>
-            
-        </div>
-    </article>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/06/11/Vue生命周期/" title= "Vue生命周期">
+                    <div class="prevTitle">Vue生命周期</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -644,6 +543,24 @@ num 变成字符串     num + “
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#如何设置前端编译环境变量"><span class="toc-number">1.</span> <span class="toc-text">如何设置前端编译环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一种方式"><span class="toc-number">1.1.</span> <span class="toc-text">第一种方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二种方式"><span class="toc-number">1.2.</span> <span class="toc-text">第二种方式</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -858,6 +775,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
